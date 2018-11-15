@@ -1,0 +1,5 @@
+Library/bin
+Library/obj
+LibraryTests/bin
+LibraryTests/obj
+.vs
