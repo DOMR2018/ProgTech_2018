@@ -10,7 +10,7 @@ namespace Library
     {
         private List<Book> allBooks = new List<Book>();
 
-        public List<Book> GetBooks()
+        public List<Book> GetAllBooks()
         {
             return allBooks;
         }

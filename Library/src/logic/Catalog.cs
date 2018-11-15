@@ -18,27 +18,27 @@ namespace Library
 
         public Book GetBook(int id)
         {
-            return dao.GetBooks().Select(book => book).Where(book => id == book.GetId()).ToArray()[0];
+            return dao.GetAllBooks().Select(book => book).Where(book => id == book.GetId()).ToArray()[0];
         }
 
         public List<Book> GetBooksByAuthor(String author)
         {
-            return dao.GetBooks().Select(b=>b).Where(b=> b.GetAuthor().Equals(author)).ToList();
+            return dao.GetAllBooks().Select(b=>b).Where(b=> b.GetAuthor().Equals(author)).ToList();
         }
 
         public List<Book> GetBooksByTitle(String title)
         {
-            return dao.GetBooks().Select(b => b).Where(b => b.GetTitle().Equals(title)).ToList();
+            return dao.GetAllBooks().Select(b => b).Where(b => b.GetTitle().Equals(title)).ToList();
         }
 
         public List<Book> GetBooksByState(bool isAvailable)
         {
-            return dao.GetBooks().Select(b => b).Where(b => (b.GetClient() == null) == isAvailable).ToList();
+            return dao.GetAllBooks().Select(b => b).Where(b => (b.GetClient() == null) == isAvailable).ToList();
         }
 
-        public List<Book> GetBooks()
+        public List<Book> GetAllBooks()
         {
-            return dao.GetBooks();
+            return dao.GetAllBooks();
         }
 
         public void AddBooks(params Book[] books)

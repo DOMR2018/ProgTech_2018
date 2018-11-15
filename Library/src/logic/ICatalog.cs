@@ -12,7 +12,7 @@ namespace Library
          List<Book> GetBooksByAuthor(String author);
          List<Book> GetBooksByTitle(String title);
          List<Book> GetBooksByState(bool isAvailable);
-         List<Book> GetBooks();
+         List<Book> GetAllBooks();
          void AddBooks(params Book[] books);
          void RemoveBook(int id);
          void BorrowBook(int id, Client client);

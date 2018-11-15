@@ -31,7 +31,7 @@ namespace LibraryTests
             //when
             catalog.AddBooks(book);
             //then
-            Assert.AreEqual(catalog.GetBooks()[0], book);
+            Assert.AreEqual(catalog.GetAllBooks()[0], book);
         }
 
         [TestMethod()]
@@ -137,7 +137,7 @@ namespace LibraryTests
             //when
             catalog.RemoveBook(book2.GetId());
             //then
-            List<Book> result = catalog.GetBooks();
+            List<Book> result = catalog.GetAllBooks();
             Assert.IsTrue(result.Count == 2);
             Assert.IsTrue(result.Contains(book1));
             Assert.IsTrue(result.Contains(book3));

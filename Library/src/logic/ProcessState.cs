@@ -17,7 +17,7 @@ namespace Library
 
         public List<Book> GetCurrentLibraryState()
         {
-            return dao.GetBooks();
+            return dao.GetAllBooks();
         }
     }
 }

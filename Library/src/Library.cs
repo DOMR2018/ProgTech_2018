@@ -7,7 +7,6 @@ using System.Threading.Tasks;
 namespace Library.src
 {
     public class Library
-        //todo as another project - use dll
     {
         private ICatalog catalog;
         private ProcessState processState;
@@ -22,9 +21,9 @@ namespace Library.src
             this.events = new Events();
         }
 
-        public List<Book> GetBooks()
+        public List<Book> GetAllBooks()
         {
-            return catalog.GetBooks();
+            return catalog.GetAllBooks();
         }
 
         public Book GetBook(int id)
