@@ -8,11 +8,11 @@ namespace Library
 {
     public class SimpleBookDao : IBookDao
     {
-        private List<Book> books = new List<Book>();
+        private List<Book> allBooks = new List<Book>();
 
         public List<Book> GetBooks()
         {
-            return books;
+            return allBooks;
         }
 
         public List<Book> GetBooks(String query)
@@ -22,16 +22,16 @@ namespace Library
 
         public void AddBook(Book book)
         {
-            books.Add(book);
+            allBooks.Add(book);
         }
 
         public void RemoveBook(int id)
         {
-            foreach (Book book in books)
+            foreach (Book book in allBooks)
             {
                 if (book.GetId() == id)
                 {
-                    books.Remove(book);
+                    allBooks.Remove(book);
                     return;
                 }
             }

@@ -13,16 +13,19 @@ namespace Library.src.Tests
     public class EventsTests
     {
         private Events eventsList;
+
         [TestInitialize()]
         public void SetUp()
         {
             this.eventsList = new Events();
         }
+
         [TestCleanup()]
         public void TearDown()
         {
             this.eventsList = null;
         }
+
         [TestMethod()]
         public void ListEventsTest()
         {

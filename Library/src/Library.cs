@@ -26,22 +26,27 @@ namespace Library.src
         {
             return catalog.GetBooks();
         }
+
         public Book GetBook(int id)
         {
             return catalog.GetBook(id);
         }
+
         public List<Book> GetBooksByAuthor(String author)
         {
             return catalog.GetBooksByAuthor(author);
         }
+
         public List<Book> GetBooksByTitle(String title)
         {
             return catalog.GetBooksByTitle(title);
         }
+
         public List<Book> GetBooksByState(bool isAvailable)
         {
             return catalog.GetBooksByState(isAvailable);
         }
+
         public void AddBook(String title, String author)
         {
             int i = 0;
@@ -51,10 +56,12 @@ namespace Library.src
             }
             catalog.AddBooks(new Book(title, author, i));
         }
+
         public void RemoveBook(int id)
         {
             catalog.RemoveBook(id);
         }
+
         public void BorrowBook(int clientId, int bookId)
         {
             Book book = catalog.GetBook(bookId);
@@ -83,6 +90,7 @@ namespace Library.src
                 Console.WriteLine("Book not found");
             }
         }
+
         public void ReturnBook(int clientId, int bookId)
         {
             Book book = catalog.GetBook(bookId);
@@ -117,18 +125,22 @@ namespace Library.src
         {
             return users.GetAllClients();
         }
+
         public Client GetClientById(int id)
         {
             return users.GetClientById(id);
         }
+
         public Client GetClientByFirstName(String firstName)
         {
             return users.GetClientByFirstName(firstName);
         }
+
         public Client GetClientByLastName(String lastName)
         {
             return users.GetClientByLastName(lastName);
         }
+
         public void AddClient(String firstName, String lastName)
         {
             int i = 0;
@@ -140,10 +152,12 @@ namespace Library.src
             users.AddClient(newClient);
             events.RegisterEvent(new NewUser(newClient));
         }
+
         public bool RemoveClient(int id)
         {
             return users.RemoveClient(id);
         }
+
         public bool UpdateClient(Client client)
         {
             return users.UpdateClient(client);
