@@ -11,7 +11,7 @@ namespace Library
         private int id;
         private String firstName;
         private String lastName;
-        private List<Book> books = new List<Book>();
+        private List<Book> borrowedBooks = new List<Book>();
 
         public Client(String firstName, String lastName, int id)
         {
@@ -57,22 +57,22 @@ namespace Library
 
         public void AddBook(Book newBook)
         {
-            books.Add(newBook);
+            borrowedBooks.Add(newBook);
         }
 
         public void RemoveBook(Book book)
         {
-            books.Remove(book);
+            borrowedBooks.Remove(book);
         }
 
         public int GetAmountOfBooks()
         {
-            return books.Count;
+            return borrowedBooks.Count;
         }
 
         public List<Book> GetAllBooks()
         {
-            return books;
+            return borrowedBooks;
         }
 
         public void Update(Client updatedClient)
@@ -80,7 +80,7 @@ namespace Library
             this.id = updatedClient.GetId();
             this.firstName = updatedClient.GetFirstName();
             this.lastName = updatedClient.GetLastName();
-            this.books = updatedClient.GetAllBooks();
+            this.borrowedBooks = updatedClient.GetAllBooks();
         }
     }
 }

@@ -22,6 +22,7 @@ namespace LibraryTests
         {
             this.catalog = null;
         }
+
         [TestMethod()]
         public void HappyPath()
         {
