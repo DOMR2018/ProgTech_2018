@@ -14,7 +14,7 @@ namespace LibraryTests
         [TestInitialize()]
         public void SetUp()
         {
-            this.dao = new SimpleBookDao();
+            this.dao = new BookDao();
             this.processState = new ProcessState(dao);
         }
 

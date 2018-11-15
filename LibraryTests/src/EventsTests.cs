@@ -30,9 +30,9 @@ namespace Library.src.Tests
         public void ListEventsTest()
         {
             //given
-            Book newBook1 = new Book("Tested Borrowed Book", "Developer", 1);
-            Book newBook2 = new Book("Tested Next Book", "Developer", 2);
-            Client newClient = new Client("Paul", "Bush", 1);
+            Book newBook1 = new Book("Borrowed Book", "Developer", 1);
+            Book newBook2 = new Book("Next Book", "Developer", 2);
+            Client newClient = new Client("Bob", "Ross", 1);
             //when
             eventsList.RegisterEvent(new BorrowBook(newClient, newBook1));
             eventsList.RegisterEvent(new BorrowBook(newClient, newBook2));

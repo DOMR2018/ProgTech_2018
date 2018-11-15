@@ -13,7 +13,7 @@ namespace LibraryTests
         [TestInitialize()]
         public void SetUp()
         {
-            IBookDao dao = new SimpleBookDao();
+            IBookDao dao = new BookDao();
             this.catalog = new Catalog(dao);
         }
 
@@ -27,7 +27,7 @@ namespace LibraryTests
         public void HappyPath()
         {
             //given
-            Book book = new Book("Test title", "Test author", 1);
+            Book book = new Book("Magic Title", "Harry Potter", 1);
             //when
             catalog.AddBooks(book);
             //then
@@ -82,8 +82,8 @@ namespace LibraryTests
         public void ShouldBorrowBook()
         {
             //given
-            Book book1 = new Book("Title", "Test", 1);
-            Client client = new Client("George", "Bush", 1);
+            Book book1 = new Book("Title", "Steve Jobs", 1);
+            Client client = new Client("John", "Kowalski", 1);
             catalog.AddBooks(book1);
             //when
             catalog.BorrowBook(book1.GetId(), client);
@@ -95,8 +95,8 @@ namespace LibraryTests
         public void ShouldReturnBook()
         {
             //given
-            Book book1 = new Book("Title", "Test", 1);
-            Client client = new Client("George", "Bush", 1);
+            Book book1 = new Book("Title", "George Washington", 1);
+            Client client = new Client("John", "Kowalski", 1);
             catalog.AddBooks(book1);
             catalog.BorrowBook(book1.GetId(), client);
             //when
@@ -112,7 +112,7 @@ namespace LibraryTests
             Book book1 = new Book("Title", "Test", 1);
             Book book2 = new Book("Eltit", "Tset", 2);
             Book book3 = new Book("Title", "Le", 3);
-            Client client = new Client("George", "Bush", 1);
+            Client client = new Client("John", "Kowalski", 1);
             catalog.AddBooks(book1, book2, book3);
             catalog.BorrowBook(book1.GetId(), client);
             //when

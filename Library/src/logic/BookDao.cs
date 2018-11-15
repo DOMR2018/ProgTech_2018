@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Library
 {
-    public class SimpleBookDao : IBookDao
+    public class BookDao : IBookDao
     {
         private List<Book> allBooks = new List<Book>();
 

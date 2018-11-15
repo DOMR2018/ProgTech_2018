@@ -23,7 +23,7 @@ namespace Library.src
     {
         public NewUser(Client user) : base(user)
         {
-
+            
         }
     }
 

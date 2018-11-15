@@ -99,9 +99,9 @@ namespace Library.src.Tests
         public void RemoveClientTest()
         {
             //given
-            Client client1 = new Client("John", "Bush", 1);
-            Client client2 = new Client("Andrew", "Bush", 2);
-            Client client3 = new Client("Peter", "Bush", 3);
+            Client client1 = new Client("John", "Lennon", 1);
+            Client client2 = new Client("Mike", "Love", 2);
+            Client client3 = new Client("Ringo", "Starr", 3);
             usersList.AddClients(client1, client2, client3);
             //when
             usersList.RemoveClient(2);
@@ -117,13 +117,13 @@ namespace Library.src.Tests
         public void UpdateClientTest()
         {
             //given
-            Client client1 = new Client("John", "Bush", 1);
-            Client client2 = new Client("Andrew", "Bush", 2);
-            Client client3 = new Client("Peter", "Bush", 3);
+            Client client1 = new Client("John", "Lennon", 1);
+            Client client2 = new Client("Mike", "Love", 2);
+            Client client3 = new Client("Ringo", "Starr", 3);
             usersList.AddClients(client1, client2, client3);
             //when
             Client updatedClient = usersList.GetClientById(2);
-            updatedClient.setFirstName("Paul");
+            updatedClient.setFirstName("Steven");
             usersList.UpdateClient(updatedClient);
             //then
             Assert.AreEqual(usersList.GetClientById(2), updatedClient);
