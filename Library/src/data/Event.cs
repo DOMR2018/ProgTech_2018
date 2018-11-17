@@ -1,18 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Library.src
 {
     public class Event
     {
-        private Client user;
+        private User user;
         private Book book;
         private String createdAt;
 
-        public Event(Client user)
+        public Event(User user)
         {
             this.user = user;
             this.createdAt = DateTime.UtcNow.ToLocalTime().ToString("dd-MM-yyyy hh:mm:ss");
@@ -21,7 +17,7 @@ namespace Library.src
 
     public class NewUser : Event
     {
-        public NewUser(Client user) : base(user)
+        public NewUser(User user) : base(user)
         {
             
         }
@@ -30,10 +26,10 @@ namespace Library.src
     public class BorrowBook : Event
     {
         private Book book;
-        public BorrowBook(Client user, Book book) : base(user)
+        public BorrowBook(User user, Book book) : base(user)
         {
             this.book = book;
-            book.SetClient(user);
+            book.SetUser(user);
             user.AddBook(book);
         }
     }
@@ -41,10 +37,10 @@ namespace Library.src
     public class ReturnBook : Event
     {
         private Book book;
-        public ReturnBook(Client user, Book book) : base(user)
+        public ReturnBook(User user, Book book) : base(user)
         {
             this.book = book;
-            book.SetClient(null);
+            book.SetUser(null);
             user.RemoveBook(book);
         }
     }

@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Library.src
 {
@@ -41,19 +38,24 @@ namespace Library.src
             return catalog.GetBooksByTitle(title);
         }
 
+        public List<Book> GetBooksByGenre(String genre)
+        {
+            return catalog.GetBooksByGenre(genre);
+        }
+
         public List<Book> GetBooksByState(bool isAvailable)
         {
             return catalog.GetBooksByState(isAvailable);
         }
 
-        public void AddBook(String title, String author)
+        public void AddBook(String title, String author, String genre)
         {
             int i = 0;
             while(catalog.GetBook(i) != null)
             {
                 i++;
             }
-            catalog.AddBooks(new Book(title, author, i));
+            catalog.AddBooks(new Book(i, title, author, genre));
         }
 
         public void RemoveBook(int id)
@@ -64,12 +66,12 @@ namespace Library.src
         public void BorrowBook(int clientId, int bookId)
         {
             Book book = catalog.GetBook(bookId);
-            Client client = users.GetClientById(clientId);
+            User client = users.GetUserById(clientId);
             if(book != null)
             {
                 if(client != null)
                 {
-                    if (book.GetClient() != null)
+                    if (book.GetUser() != null)
                     {
                         Console.WriteLine("Book is not available");
                         return;
@@ -93,12 +95,12 @@ namespace Library.src
         public void ReturnBook(int clientId, int bookId)
         {
             Book book = catalog.GetBook(bookId);
-            Client client = users.GetClientById(clientId);
+            User client = users.GetUserById(clientId);
             if (book != null)
             {
                 if (client != null)
                 {
-                    if (book.GetClient() != client)
+                    if (book.GetUser() != client)
                     {
                         Console.WriteLine("Book is not borrowed by this client");
                         return;
@@ -120,46 +122,46 @@ namespace Library.src
         }
 
 
-        public List<Client> GetClients()
+        public List<User> GetClients()
         {
-            return users.GetAllClients();
+            return users.GetAllUsers();
         }
 
-        public Client GetClientById(int id)
+        public User GetClientById(int id)
         {
-            return users.GetClientById(id);
+            return users.GetUserById(id);
         }
 
-        public Client GetClientByFirstName(String firstName)
+        public User GetClientByFirstName(String firstName)
         {
-            return users.GetClientByFirstName(firstName);
+            return users.GetUserByFirstName(firstName);
         }
 
-        public Client GetClientByLastName(String lastName)
+        public User GetClientByLastName(String lastName)
         {
-            return users.GetClientByLastName(lastName);
+            return users.GetUserByLastName(lastName);
         }
 
         public void AddClient(String firstName, String lastName)
         {
             int i = 0;
-            while (users.GetClientById(i) != null)
+            while (users.GetUserById(i) != null)
             {
                 i++;
             }
-            Client newClient = new Client(firstName, lastName, i);
-            users.AddClient(newClient);
+            User newClient = new User(i, firstName, lastName);
+            users.AddUser(newClient);
             events.RegisterEvent(new NewUser(newClient));
         }
 
         public bool RemoveClient(int id)
         {
-            return users.RemoveClient(id);
+            return users.RemoveUser(id);
         }
 
-        public bool UpdateClient(Client client)
+        public bool UpdateClient(User client)
         {
-            return users.UpdateClient(client);
+            return users.UpdateUser(client);
         }
 
 

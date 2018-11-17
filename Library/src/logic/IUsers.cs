@@ -1,20 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Library.src
 {
     public interface IUsers
     {
-        Client GetClientById(int id);
-        Client GetClientByFirstName(String firstName);
-        Client GetClientByLastName(String lastName);
-        List<Client> GetAllClients();
-        void AddClient(Client client);
-        void AddClients(params Client[] clients);
-        bool RemoveClient(int id);
-        bool UpdateClient(Client client);
+        User GetUserById(int id);
+        User GetUserByFirstName(String firstName);
+        User GetUserByLastName(String lastName);
+        List<User> GetAllUsers();
+        void AddUser(User client);
+        void AddMultipleUsers(params User[] clients);
+        bool RemoveUser(int id);
+        bool UpdateUser(User client);
     }
 }

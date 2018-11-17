@@ -1,15 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace Library
 {
     public interface IBookDao
     {
         List<Book> GetAllBooks();
-        List<Book> GetBooks(String query);
+        //List<Book> GetBooks(String query);
         void AddBook(Book book);
         void RemoveBook(int id);
     }

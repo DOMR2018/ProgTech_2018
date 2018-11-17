@@ -1,11 +1,5 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Library.src;
-using Library;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Library.src.Tests
 {
@@ -28,11 +22,11 @@ namespace Library.src.Tests
         public void ShouldAddClient()
         {
             //given
-            Client client = new Client("John", "Bush", 1);
+            User client = new User(1, "Tom", "Hanks");
             //when
-            usersList.AddClient(client);
+            usersList.AddUser(client);
             //them
-            Assert.AreEqual(usersList.GetAllClients()[0], client);
+            Assert.AreEqual(usersList.GetAllUsers()[0], client);
 
         }
 
@@ -40,93 +34,93 @@ namespace Library.src.Tests
         public void GetAllUsersTest()
         {
             //given
-            Client client1 = new Client("John", "Bush", 1);
-            Client client2 = new Client("Andrew", "Bush", 2);
-            Client client3 = new Client("Peter", "Bush", 3);
+            User user1 = new User(1, "John", "Hanks");
+            User user2 = new User(2, "Jack", "Hanks");
+            User user3 = new User(3, "Joseph", "Hanks");
             //when
-            usersList.AddClients(client1, client2, client3);
+            usersList.AddMultipleUsers(user1, user2, user3);
             //then
-            List<Client> allUsers = usersList.GetAllClients();
+            List<User> allUsers = usersList.GetAllUsers();
             Assert.IsTrue(allUsers.Count == 3);
-            Assert.IsTrue(allUsers.Contains(client1));
-            Assert.IsTrue(allUsers.Contains(client2));
-            Assert.IsTrue(allUsers.Contains(client3));
+            Assert.IsTrue(allUsers.Contains(user1));
+            Assert.IsTrue(allUsers.Contains(user2));
+            Assert.IsTrue(allUsers.Contains(user3));
         }
 
         [TestMethod()]
         public void GetClientByFirstNameTest()
         {
             //given
-            Client client1 = new Client("John", "Bush", 1);
-            Client client2 = new Client("Andrew", "Bush", 2);
-            Client client3 = new Client("Peter", "Bush", 3);
-            usersList.AddClients(client1, client2, client3);
+            User user1 = new User(1, "John", "Hanks");
+            User user2 = new User(2, "Jack", "Hanks");
+            User user3 = new User(3, "Joseph", "Hanks");
+            usersList.AddMultipleUsers(user1, user2, user3);
             //when
-            Client testClient = usersList.GetClientByFirstName(client2.GetFirstName());
+            User testUser = usersList.GetUserByFirstName(user2.GetFirstName());
             //then
-            Assert.AreEqual(testClient, client2);
+            Assert.AreEqual(testUser, user2);
         }
 
         [TestMethod()]
         public void GetClientByIdTest()
         {
             //given
-            Client client1 = new Client("John", "Bush", 1);
-            Client client2 = new Client("Andrew", "Bush", 2);
-            Client client3 = new Client("Peter", "Bush", 3);
-            usersList.AddClients(client1, client2, client3);
+            User user1 = new User(1, "John", "Hanks");
+            User user2 = new User(2, "Jack", "Hanks");
+            User user3 = new User(3, "Joseph", "Hanks");
+            usersList.AddMultipleUsers(user1, user2, user3);
             //when
-            Client testClient = usersList.GetClientById(client1.GetId());
+            User testUser = usersList.GetUserById(user1.GetId());
             //then
-            Assert.AreEqual(testClient, client1);
+            Assert.AreEqual(testUser, user1);
         }
 
         [TestMethod()]
         public void GetClientByLastNameTest()
         {
             //given
-            Client client1 = new Client("John", "Bush", 1);
-            Client client2 = new Client("Andrew", "Forest", 2);
-            Client client3 = new Client("Peter", "Tree", 3);
-            usersList.AddClients(client1, client2, client3);
+            User user1 = new User(1, "John", "Hanks");
+            User user2 = new User(2, "Jack", "Hanks");
+            User user3 = new User(3, "Joseph", "Hanks");
+            usersList.AddMultipleUsers(user1, user2, user3);
             //when
-            Client testClient = usersList.GetClientByLastName(client3.GetLastName());
+            User testUser = usersList.GetUserByLastName(user1.GetLastName());
             //then
-            Assert.AreEqual(testClient, client3);
+            Assert.AreEqual(testUser, user1);
         }
 
         [TestMethod()]
         public void RemoveClientTest()
         {
             //given
-            Client client1 = new Client("John", "Lennon", 1);
-            Client client2 = new Client("Mike", "Love", 2);
-            Client client3 = new Client("Ringo", "Starr", 3);
-            usersList.AddClients(client1, client2, client3);
+            User user1 = new User(1, "John", "Lennon");
+            User user2 = new User(2, "Mike", "Love");
+            User user3 = new User(3, "Ringo", "Starr");
+            usersList.AddMultipleUsers(user1, user2, user3);
             //when
-            usersList.RemoveClient(2);
+            usersList.RemoveUser(2);
             //then
-            List<Client> allUsers = usersList.GetAllClients();
+            List<User> allUsers = usersList.GetAllUsers();
             Assert.IsTrue(allUsers.Count == 2);
-            Assert.IsTrue(allUsers.Contains(client1));
-            Assert.IsFalse(allUsers.Contains(client2));
-            Assert.IsTrue(allUsers.Contains(client3));
+            Assert.IsTrue(allUsers.Contains(user1));
+            Assert.IsFalse(allUsers.Contains(user2));
+            Assert.IsTrue(allUsers.Contains(user3));
         }
 
         [TestMethod()]
         public void UpdateClientTest()
         {
             //given
-            Client client1 = new Client("John", "Lennon", 1);
-            Client client2 = new Client("Mike", "Love", 2);
-            Client client3 = new Client("Ringo", "Starr", 3);
-            usersList.AddClients(client1, client2, client3);
+            User user1 = new User(1, "John", "Lennon");
+            User user2 = new User(2, "Mike", "Love");
+            User user3 = new User(3, "Ringo", "Starr");
+            usersList.AddMultipleUsers(user1, user2, user3);
             //when
-            Client updatedClient = usersList.GetClientById(2);
+            User updatedClient = usersList.GetUserById(2);
             updatedClient.setFirstName("Steven");
-            usersList.UpdateClient(updatedClient);
+            usersList.UpdateUser(updatedClient);
             //then
-            Assert.AreEqual(usersList.GetClientById(2), updatedClient);
+            Assert.AreEqual(usersList.GetUserById(2), updatedClient);
         }
     }
 }

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace Library
 {
@@ -15,10 +11,10 @@ namespace Library
             return allBooks;
         }
 
-        public List<Book> GetBooks(String query)
-        {
-            throw new NotSupportedException();
-        }
+        //public List<Book> GetBooks(String query)
+        //{
+        //    throw new NotSupportedException();
+        //}
 
         public void AddBook(Book book)
         {

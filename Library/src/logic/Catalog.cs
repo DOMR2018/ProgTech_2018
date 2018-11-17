@@ -2,8 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Library
 {
@@ -23,17 +21,22 @@ namespace Library
 
         public List<Book> GetBooksByAuthor(String author)
         {
-            return dao.GetAllBooks().Select(b=>b).Where(b=> b.GetAuthor().Equals(author)).ToList();
+            return dao.GetAllBooks().Select(book => book).Where(book => book.GetAuthor().Equals(author)).ToList();
         }
 
         public List<Book> GetBooksByTitle(String title)
         {
-            return dao.GetAllBooks().Select(b => b).Where(b => b.GetTitle().Equals(title)).ToList();
+            return dao.GetAllBooks().Select(book => book).Where(book => book.GetTitle().Equals(title)).ToList();
+        }
+
+        public List<Book> GetBooksByGenre(String genre)
+        {
+            return dao.GetAllBooks().Select(book => book).Where(book => book.GetGenre().Equals(genre)).ToList();
         }
 
         public List<Book> GetBooksByState(bool isAvailable)
         {
-            return dao.GetAllBooks().Select(b => b).Where(b => (b.GetClient() == null) == isAvailable).ToList();
+            return dao.GetAllBooks().Select(book => book).Where(book => (book.GetUser() == null) == isAvailable).ToList();
         }
 
         public List<Book> GetAllBooks()
@@ -53,16 +56,16 @@ namespace Library
             dao.RemoveBook(id);
         }
 
-        public void BorrowBook(int id, Client client)
+        public void BorrowBook(int id, User client)
         {
-            this.GetBook(id).SetClient(client);
+            this.GetBook(id).SetUser(client);
         }
 
-        public void ReturnBook(int id, Client client)
+        public void ReturnBook(int id, User client)
         {
-            if (client.Equals(GetBook(id).GetClient()))
+            if (client.Equals(GetBook(id).GetUser()))
             {
-                this.GetBook(id).SetClient(null);
+                this.GetBook(id).SetUser(null);
             }
         }
     }

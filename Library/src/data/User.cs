@@ -1,19 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Library
 {
-    public class Client
+    public class User
     {
         private int id;
         private String firstName;
         private String lastName;
         private List<Book> borrowedBooks = new List<Book>();
 
-        public Client(String firstName, String lastName, int id)
+        public User(int id, String firstName, String lastName)
         {
             this.id = id;
             this.firstName = firstName;
@@ -47,7 +44,7 @@ namespace Library
 
         public String GetLastName()
         {
-            return  this.lastName;
+            return this.lastName;
         }
 
         public void setLastName(String lastName)
@@ -75,7 +72,7 @@ namespace Library
             return borrowedBooks;
         }
 
-        public void Update(Client updatedClient)
+        public void Update(User updatedClient)
         {
             this.id = updatedClient.GetId();
             this.firstName = updatedClient.GetFirstName();

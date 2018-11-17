@@ -1,78 +1,75 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Library.src
 {
     public class Users : IUsers
     {
-        List<Client> clientList = new List<Client>();
+        List<User> userList = new List<User>();
 
-        public void AddClient(Client client)
+        public void AddUser(User user)
         {
-            clientList.Add(client);
+            userList.Add(user);
         }
 
-        public void AddClients(params Client[] clients)
+        public void AddMultipleUsers(params User[] users)
         {
-            foreach (Client client in clients)
+            foreach (User user in users)
             {
-                clientList.Add(client);
+                userList.Add(user);
             }
         }
 
-        public List<Client> GetAllClients()
+        public List<User> GetAllUsers()
         {
-            return clientList;
+            return userList;
         }
 
-        public Client GetClientByFirstName(string firstName)
+        public User GetUserByFirstName(string firstName)
         {
-            foreach (Client client in clientList)
+            foreach (User user in userList)
             {
-                if (client.GetFirstName() == firstName) return client;
-            }
-            return null;
-        }
-
-        public Client GetClientById(int id)
-        {
-            foreach (Client client in clientList)
-            {
-                if (client.GetId() == id) return client;
+                if (user.GetFirstName() == firstName) return user;
             }
             return null;
         }
 
-        public Client GetClientByLastName(string lastName)
+        public User GetUserById(int id)
         {
-            foreach (Client client in clientList)
+            foreach (User user in userList)
             {
-                if (client.GetLastName() == lastName) return client;
+                if (user.GetId() == id) return user;
             }
             return null;
         }
 
-        public bool RemoveClient(int id)
+        public User GetUserByLastName(string lastName)
         {
-            Client clientToRemove = clientList.Single(client => client.GetId() == id);
-            if (clientToRemove != null)
+            foreach (User user in userList)
             {
-                clientList.Remove(clientToRemove);
+                if (user.GetLastName() == lastName) return user;
+            }
+            return null;
+        }
+
+        public bool RemoveUser(int id)
+        {
+            User userToRemove = userList.Single(user => user.GetId() == id);
+            if (userToRemove != null)
+            {
+                userList.Remove(userToRemove);
                 return true;
             }
             return false;
             
         }
 
-        public bool UpdateClient(Client updatedClient)
+        public bool UpdateUser(User updatedUser)
         {
-            Client clientToUpdate = clientList.Single(client => client.GetId() == updatedClient.GetId());
-            if(clientToUpdate != null)
+            User userToUpdate = userList.Single(user => user.GetId() == updatedUser.GetId());
+            if(userToUpdate != null)
             {
-                clientToUpdate.Update(updatedClient);
+                userToUpdate.Update(updatedUser);
                 return true;
             }
             return false;

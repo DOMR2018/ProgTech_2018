@@ -1,23 +1,21 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Library
 {
     public class Book
     {
+        private int id;
         private String title;
         private String author;
-        private int id;
-        private Client client;
+        private String genre;
+        private User user; //who borrowed the book; null means its in library
 
-        public Book (String title, String author, int id)
+        public Book (int id, String title, String author, String genre)
         {
             this.id = id;
             this.title = title;
-            this.author = author;            
+            this.author = author;
+            this.genre = genre;
         }
 
         public int GetId()
@@ -33,16 +31,21 @@ namespace Library
         public String GetAuthor()
         {
             return this.author;
-        } 
-
-        public Client GetClient()
-        {
-            return this.client;
         }
 
-        public void SetClient(Client client)
+        public String GetGenre()
         {
-            this.client = client;
+            return this.genre;
+        }
+
+        public User GetUser()
+        {
+            return this.user;
+        }
+
+        public void SetUser(User user)
+        {
+            this.user = user;
         }
     }
 }

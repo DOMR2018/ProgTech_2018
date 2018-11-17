@@ -1,11 +1,4 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Library.src;
-using Library;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Library.src.Tests
 {
@@ -30,16 +23,16 @@ namespace Library.src.Tests
         public void ListEventsTest()
         {
             //given
-            Book newBook1 = new Book("Borrowed Book", "Developer", 1);
-            Book newBook2 = new Book("Next Book", "Developer", 2);
-            Client newClient = new Client("Bob", "Ross", 1);
+            Book newBook1 = new Book(1, "Borrowed Book", "Developer", "test");
+            Book newBook2 = new Book(2, "Next Book", "Developer", "test");
+            User newClient = new User(1, "Bob", "Ross");
             //when
             eventsList.RegisterEvent(new BorrowBook(newClient, newBook1));
             eventsList.RegisterEvent(new BorrowBook(newClient, newBook2));
             eventsList.RegisterEvent(new ReturnBook(newClient, newBook2));
             //then
-            Assert.AreEqual(newBook1.GetClient(), newClient);
-            Assert.AreEqual(newBook2.GetClient(), null);
+            Assert.AreEqual(newBook1.GetUser(), newClient);
+            Assert.AreEqual(newBook2.GetUser(), null);
             Assert.IsTrue(newClient.GetAllBooks().Count == 1);
             Assert.IsTrue(eventsList.listEvents().Count == 3);
 
