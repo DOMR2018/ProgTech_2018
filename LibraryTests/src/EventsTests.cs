@@ -5,12 +5,12 @@ namespace Library.src.Tests
     [TestClass()]
     public class EventsTests
     {
-        private Events eventsList;
+        private EventsBasicImpl eventsList;
 
         [TestInitialize()]
         public void SetUp()
         {
-            this.eventsList = new Events();
+            this.eventsList = new EventsBasicImpl();
         }
 
         [TestCleanup()]

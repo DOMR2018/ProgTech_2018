@@ -3,7 +3,7 @@ using System.Linq;
 
 namespace Library.src
 {
-    public class Users : IUsers
+    public class UsersBasicImpl : IUsers
     {
         List<User> userList = new List<User>();
 

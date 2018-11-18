@@ -12,8 +12,8 @@ namespace LibraryTests
         [TestInitialize()]
         public void SetUp()
         {
-            IBookDao dao = new BookDao();
-            this.catalog = new Catalog(dao);
+            IBookDao dao = new BookDaoBasicImpl();
+            this.catalog = new CatalogBasicImpl(dao);
         }
 
         [TestCleanup()]
@@ -37,9 +37,9 @@ namespace LibraryTests
         public void ShouldGetBookById()
         {
             //given
-            Book book1 = new Book(1, "Title", "Tset", "Ttse");
-            Book book2 = new Book(2, "Eltit", "Tset", "Ttse");
-            Book book3 = new Book(3, "Title", "Le", "Ttse");
+            Book book1 = new Book(1, "Title1", "Tset", "Ttse");
+            Book book2 = new Book(2, "Title2", "Tset", "Ttse");
+            Book book3 = new Book(3, "Title3", "Le", "Ttse");
             catalog.AddBooks(book1, book2, book3);
             //then
             Assert.AreEqual(catalog.GetBook(book2.GetId()), book2);
@@ -49,9 +49,9 @@ namespace LibraryTests
         public void ShouldGetBookByAuthor()
         {
             //given
-            Book book1 = new Book(1, "Title", "Tset", "Ttse");
-            Book book2 = new Book(2, "Eltit", "Tset", "Ttse");
-            Book book3 = new Book(3, "Title", "Le", "Ttse");
+            Book book1 = new Book(1, "Title1", "Tset", "Ttse");
+            Book book2 = new Book(2, "Title2", "Tset", "Ttse");
+            Book book3 = new Book(3, "Title3", "Le", "Ttse");
             catalog.AddBooks(book1, book2, book3);
             //when
             List<Book> result = catalog.GetBooksByAuthor(book1.GetAuthor());
@@ -65,9 +65,9 @@ namespace LibraryTests
         public void ShouldGetBookByTitle()
         {
             //given
-            Book book1 = new Book(1, "Title", "Test", "Ttse");
-            Book book2 = new Book(2, "Eltit", "Tset", "Ttse");
-            Book book3 = new Book(3, "Title", "Le", "Ttse");
+            Book book1 = new Book(1, "Title1", "Test", "Ttse");
+            Book book2 = new Book(2, "Title2", "Tset", "Ttse");
+            Book book3 = new Book(3, "Title1", "Le", "Ttse");
             catalog.AddBooks(book1, book2, book3);
             //when
             List<Book> result = catalog.GetBooksByTitle(book1.GetTitle());
@@ -78,10 +78,25 @@ namespace LibraryTests
         }
 
         [TestMethod()]
+        public void ShouldGetBookByGenre()
+        {
+            //given
+            Book book1 = new Book(1, "Title1", "Test", "Horror");
+            Book book2 = new Book(2, "Title2", "Tset", "Fiction");
+            Book book3 = new Book(3, "Title3", "Le", "History");
+            catalog.AddBooks(book1, book2, book3);
+            //when
+            List<Book> result = catalog.GetBooksByGenre(book1.GetGenre());
+            //then
+            Assert.IsTrue(result.Count == 1);
+            Assert.IsTrue(result.Contains(book1));
+        }
+
+        [TestMethod()]
         public void ShouldBorrowBook()
         {
             //given
-            Book book1 = new Book(1, "Title", "Steve Jobs", "fantasy");
+            Book book1 = new Book(1, "Title1", "Steve Jobs", "fantasy");
             User user = new User(1, "John", "Kowalski");
             catalog.AddBooks(book1);
             //when
@@ -94,7 +109,7 @@ namespace LibraryTests
         public void ShouldReturnBook()
         {
             //given
-            Book book1 = new Book(1, "Title", "George Washington", "horror");
+            Book book1 = new Book(1, "Title1", "George Washington", "horror");
             User user = new User(1, "John", "Kowalski");
             catalog.AddBooks(book1);
             catalog.BorrowBook(book1.GetId(), user);
@@ -108,9 +123,9 @@ namespace LibraryTests
         public void ShouldGetBookByState()
         {
             //given
-            Book book1 = new Book(1, "Title", "Test", "Ttse");
-            Book book2 = new Book(2, "Eltit", "Tset", "Ttse");
-            Book book3 = new Book(3, "Title", "Le", "Ttse");
+            Book book1 = new Book(1, "Title1", "Test", "Ttse");
+            Book book2 = new Book(2, "Title2", "Tset", "Ttse");
+            Book book3 = new Book(3, "Title3", "Le", "Ttse");
             User user = new User(1, "John", "Kowalski");
             catalog.AddBooks(book1, book2, book3);
             catalog.BorrowBook(book1.GetId(), user);
@@ -129,9 +144,9 @@ namespace LibraryTests
         public void ShouldRemoveBook()
         {
             //given
-            Book book1 = new Book(1, "Title", "Test", "Ttse");
-            Book book2 = new Book(2, "Eltit", "Tset", "Ttse");
-            Book book3 = new Book(3, "Title", "Le", "Ttse");
+            Book book1 = new Book(1, "Title1", "Test", "Ttse");
+            Book book2 = new Book(2, "Title2", "Tset", "Ttse");
+            Book book3 = new Book(3, "Title3", "Le", "Ttse");
             catalog.AddBooks(book1, book2, book3);
             //when
             catalog.RemoveBook(book2.GetId());

@@ -62,22 +62,24 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="src\data\Book.cs" />
+    <Compile Include="src\logic_implementations\BookDaoBasicImpl.cs" />
+    <Compile Include="src\logic_implementations\CatalogBasicImpl.cs" />
+    <Compile Include="src\logic_implementations\EventsBasicImpl.cs" />
     <Compile Include="src\logic\IBookDao.cs" />
-    <Compile Include="src\logic\BookDao.cs" />
     <Compile Include="src\logic\ICatalog.cs" />
-    <Compile Include="src\logic\Catalog.cs" />
     <Compile Include="src\data\User.cs" />
     <Compile Include="src\Library.cs" />
     <Compile Include="src\data\Event.cs" />
     <Compile Include="src\logic\IEvents.cs" />
-    <Compile Include="src\logic\Events.cs" />
     <Compile Include="src\data\ProcessState.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="src\logic\IUsers.cs" />
-    <Compile Include="src\logic\Users.cs" />
+    <Compile Include="src\logic_implementations\UsersBasicImpl.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

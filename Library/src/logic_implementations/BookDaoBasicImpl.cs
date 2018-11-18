@@ -2,7 +2,7 @@
 
 namespace Library
 {
-    public class BookDao : IBookDao
+    public class BookDaoBasicImpl : IBookDao
     {
         private List<Book> allBooks = new List<Book>();
 

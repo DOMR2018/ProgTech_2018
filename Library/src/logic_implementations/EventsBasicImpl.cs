@@ -2,7 +2,7 @@
 
 namespace Library.src
 {
-    public class Events : IEvents
+    public class EventsBasicImpl : IEvents
     {
         private List<Event> allEvents = new List<Event>();
 

@@ -12,10 +12,10 @@ namespace Library.src
 
         public Library(IBookDao dao)
         {
-            this.catalog = new Catalog(dao);
+            this.catalog = new CatalogBasicImpl(dao);
             this.processState = new ProcessState(dao);
-            this.users = new Users();
-            this.events = new Events();
+            this.users = new UsersBasicImpl();
+            this.events = new EventsBasicImpl();
         }
 
         public List<Book> GetAllBooks()
@@ -52,9 +52,8 @@ namespace Library.src
         {
             int i = 0;
             while(catalog.GetBook(i) != null)
-            {
                 i++;
-            }
+
             catalog.AddBooks(new Book(i, title, author, genre));
         }
 
@@ -96,6 +95,7 @@ namespace Library.src
         {
             Book book = catalog.GetBook(bookId);
             User client = users.GetUserById(clientId);
+
             if (book != null)
             {
                 if (client != null)
@@ -120,48 +120,47 @@ namespace Library.src
                 Console.WriteLine("Book not found");
             }
         }
+  
 
-
-        public List<User> GetClients()
+        public List<User> GetUsers()
         {
             return users.GetAllUsers();
         }
 
-        public User GetClientById(int id)
+        public User GetUserById(int id)
         {
             return users.GetUserById(id);
         }
 
-        public User GetClientByFirstName(String firstName)
+        public User GetUserByFirstName(String firstName)
         {
             return users.GetUserByFirstName(firstName);
         }
 
-        public User GetClientByLastName(String lastName)
+        public User GetUserByLastName(String lastName)
         {
             return users.GetUserByLastName(lastName);
         }
 
-        public void AddClient(String firstName, String lastName)
+        public void AddUser(String firstName, String lastName)
         {
             int i = 0;
             while (users.GetUserById(i) != null)
-            {
                 i++;
-            }
-            User newClient = new User(i, firstName, lastName);
-            users.AddUser(newClient);
-            events.RegisterEvent(new NewUser(newClient));
+
+            User newUser = new User(i, firstName, lastName);
+            users.AddUser(newUser); //add new user to the userlist
+            events.RegisterEvent(new NewUser(newUser)); //register the fact that there's new user
         }
 
-        public bool RemoveClient(int id)
+        public bool RemoveUser(int id)
         {
             return users.RemoveUser(id);
         }
 
-        public bool UpdateClient(User client)
+        public bool UpdateUser(User user)
         {
-            return users.UpdateUser(client);
+            return users.UpdateUser(user);
         }
 
 

@@ -6,11 +6,11 @@ namespace Library.src.Tests
     [TestClass()]
     public class UsersTests
     {
-        private Users usersList;
+        private UsersBasicImpl usersList;
         [TestInitialize()]
         public void SetUp()
         {
-            this.usersList = new Users();
+            this.usersList = new UsersBasicImpl();
         }
         [TestCleanup()]
         public void TearDown()

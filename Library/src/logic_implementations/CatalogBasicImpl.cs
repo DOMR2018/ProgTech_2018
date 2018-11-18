@@ -5,11 +5,11 @@ using System.Linq;
 
 namespace Library
 {
-    public class Catalog : ICatalog
+    public class CatalogBasicImpl : ICatalog
     {
         private IBookDao dao;
 
-        public Catalog(IBookDao dao)
+        public CatalogBasicImpl(IBookDao dao)
         {
             this.dao = dao;
         }
