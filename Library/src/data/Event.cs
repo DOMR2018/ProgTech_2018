@@ -19,7 +19,7 @@ namespace Library.src
     {
         public NewUser(User user) : base(user)
         {
-            
+            //we're just registering a new user for the first time, no need for anything else
         }
     }
 
