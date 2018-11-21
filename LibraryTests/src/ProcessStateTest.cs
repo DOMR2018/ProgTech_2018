@@ -8,14 +8,14 @@ namespace LibraryTests
     [TestClass]
     public class ProcessStateTest
     {
-        private ProcessState processState;
+        private LibraryState processState;
         private IBookDao dao;
 
         [TestInitialize()]
         public void SetUp()
         {
             this.dao = new BookDaoBasicImpl();
-            this.processState = new ProcessState(dao);
+            this.processState = new LibraryState(dao);
         }
 
         [TestCleanup()]

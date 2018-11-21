@@ -6,14 +6,14 @@ namespace Library.src
     public class Library
     {
         private ICatalog catalog;
-        private ProcessState processState;
+        private LibraryState processState;
         private IUsers users;
         private IEvents events;
 
         public Library(IBookDao dao)
         {
             this.catalog = new CatalogBasicImpl(dao);
-            this.processState = new ProcessState(dao);
+            this.processState = new LibraryState(dao);
             this.users = new UsersBasicImpl();
             this.events = new EventsBasicImpl();
         }
@@ -163,12 +163,10 @@ namespace Library.src
             return users.UpdateUser(user);
         }
 
-
         public List<Event> GetEvents()
         {
             return events.listEvents();
         }
-
 
         public List<Book> GetCurrentLibraryState()
         {

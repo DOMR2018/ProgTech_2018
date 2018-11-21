@@ -2,11 +2,11 @@
 
 namespace Library
 {
-    public class ProcessState
+    public class LibraryState
     {
         private IBookDao dao;
 
-        public ProcessState(IBookDao dao)
+        public LibraryState(IBookDao dao)
         {
             this.dao = dao;
         }

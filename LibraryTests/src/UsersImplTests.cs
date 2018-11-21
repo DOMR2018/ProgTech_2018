@@ -12,6 +12,7 @@ namespace Library.src.Tests
         {
             this.usersList = new UsersBasicImpl();
         }
+
         [TestCleanup()]
         public void TearDown()
         {
@@ -19,14 +20,14 @@ namespace Library.src.Tests
         }
 
         [TestMethod()]
-        public void ShouldAddClient()
+        public void ShouldAddUser()
         {
             //given
-            User client = new User(1, "Tom", "Hanks");
+            User user = new User(1, "Tom", "Hanks");
             //when
-            usersList.AddUser(client);
+            usersList.AddUser(user);
             //them
-            Assert.AreEqual(usersList.GetAllUsers()[0], client);
+            Assert.AreEqual(usersList.GetAllUsers()[0], user);
 
         }
 
@@ -48,7 +49,7 @@ namespace Library.src.Tests
         }
 
         [TestMethod()]
-        public void GetClientByFirstNameTest()
+        public void GetUserByFirstNameTest()
         {
             //given
             User user1 = new User(1, "John", "Hanks");
@@ -62,7 +63,7 @@ namespace Library.src.Tests
         }
 
         [TestMethod()]
-        public void GetClientByIdTest()
+        public void GetUserByIdTest()
         {
             //given
             User user1 = new User(1, "John", "Hanks");
@@ -76,7 +77,7 @@ namespace Library.src.Tests
         }
 
         [TestMethod()]
-        public void GetClientByLastNameTest()
+        public void GetUserByLastNameTest()
         {
             //given
             User user1 = new User(1, "John", "Hanks");
@@ -90,7 +91,7 @@ namespace Library.src.Tests
         }
 
         [TestMethod()]
-        public void RemoveClientTest()
+        public void RemoveUserTest()
         {
             //given
             User user1 = new User(1, "John", "Lennon");
@@ -108,7 +109,7 @@ namespace Library.src.Tests
         }
 
         [TestMethod()]
-        public void UpdateClientTest()
+        public void UpdateUserTest()
         {
             //given
             User user1 = new User(1, "John", "Lennon");
