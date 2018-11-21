@@ -11,11 +11,6 @@ namespace Library
             return allBooks;
         }
 
-        //public List<Book> GetBooks(String query)
-        //{
-        //    throw new NotSupportedException();
-        //}
-
         public void AddBook(Book book)
         {
             allBooks.Add(book);
