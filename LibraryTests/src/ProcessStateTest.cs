@@ -29,9 +29,9 @@ namespace LibraryTests
         public void ShouldGetProcessState()
         {
             //given
-            Book book1 = new Book(1, "Title", "Test", "Ttse");
-            Book book2 = new Book(2, "Eltit", "Tset", "Ttse");
-            Book book3 = new Book(3, "Title", "Le", "Ttse");
+            Book book1 = new Book(1, "Title", "Test", "genre");
+            Book book2 = new Book(2, "Eltit", "Tset", "genre");
+            Book book3 = new Book(3, "Title", "Le", "genre");
             dao.AddBook(book1);
             dao.AddBook(book2);
             dao.AddBook(book3);

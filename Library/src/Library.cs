@@ -65,10 +65,10 @@ namespace Library.src
         public void BorrowBook(int clientId, int bookId)
         {
             Book book = catalog.GetBook(bookId);
-            User client = users.GetUserById(clientId);
+            User user = users.GetUserById(clientId);
             if(book != null)
             {
-                if(client != null)
+                if(user != null)
                 {
                     if (book.GetUser() != null)
                     {
@@ -77,7 +77,7 @@ namespace Library.src
                     }
                     else
                     {
-                        events.RegisterEvent(new BorrowBook(client, book));
+                        events.RegisterEvent(new BorrowBook(user, book));
                     }
                 }
                 else

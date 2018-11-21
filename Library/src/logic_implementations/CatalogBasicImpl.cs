@@ -12,7 +12,7 @@ namespace Library
         /*
          * Dependency injection via constructor injection.
          * We're getting an object that implements a given interface, so we're not coupling it with any concrete class.
-         * */
+         */
         public CatalogBasicImpl(IBookDao dao)
         {
             this.dao = dao;
