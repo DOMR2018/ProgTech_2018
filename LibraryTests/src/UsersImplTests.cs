@@ -1,5 +1,9 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Library.src.data;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
 using System.Collections.Generic;
+using System.Configuration;
+using System.Linq;
 
 namespace Library.src.Tests
 {
@@ -111,6 +115,12 @@ namespace Library.src.Tests
         [TestMethod()]
         public void UpdateUserTest()
         {
+            
+            //LibraryContext main = new LibraryContext(@"Data Source=(LocalDB)\MSSQLLocalDB;Initial Catalog=LibraryContext; Integrated Security = SSPI; AttachDBFilename=|DataDirectory|\LibraryContext.mdf");
+            //AppDomain.CurrentDomain.SetData("DataDirectory", Environment.GetFolderPath(Environment.SpecialFolder.CommonApplicationData));
+            //List<Book> Books = main.Books.ToList();
+
+
             //given
             User user1 = new User(1, "John", "Lennon");
             User user2 = new User(2, "Mike", "Love");
@@ -123,5 +133,6 @@ namespace Library.src.Tests
             //then
             Assert.AreEqual(usersList.GetUserById(2), updatedClient);
         }
+
     }
 }

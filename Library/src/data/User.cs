@@ -5,10 +5,12 @@ namespace Library
 {
     public class User
     {
-        private int id;
-        private String firstName;
-        private String lastName;
-        private List<Book> borrowedBooks = new List<Book>();
+        public int id { get; set; }
+        public String firstName { get; set; }
+        public String lastName { get; set; }
+        public List<Book> borrowedBooks = new List<Book>();
+
+        public User() { } //for DB
 
         public User(int id, String firstName, String lastName)
         {

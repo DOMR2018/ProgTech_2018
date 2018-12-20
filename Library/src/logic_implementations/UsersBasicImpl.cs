@@ -47,7 +47,7 @@ namespace Library.src
         {
             foreach (User user in userList)
             {
-                if (user.GetLastiName() == lastName) return user;
+                if (user.GetLastName() == lastName) return user;
             }
             return null;
         }

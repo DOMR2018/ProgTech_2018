@@ -4,9 +4,12 @@ namespace Library.src
 {
     public class Event
     {
-        private User user;
-        private Book book;
-        private String createdAt;
+        public int id { get; set; } 
+        public User user { get; set; }
+        public Book book { get; set; }
+        public String createdAt { get; set; }
+
+        public Event() { } //for DB
 
         public Event(User user)
         {
